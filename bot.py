@@ -11,7 +11,7 @@ def get_stat(user, platform):
   """
   url = 'https://my.callofduty.com/api/papi-client/stats/cod/v1/title/mw/platform/{0}/gamer/{1}/profile/type/mp'.format(platform, user)
 
-  headers = {'Cookie':COOKIE}
+  headers = {'Cookie': vals.COOKIE}
 
   response = requests.get(url, headers=headers)
   json_data = json.loads(response.text)
@@ -31,4 +31,4 @@ async def on_message(message):
       args = message.content.split()
       await message.channel.send(get_stat(args[1],args[2]))
 
-client.run(os.getenv(TOKEN))
+client.run(vals.TOKEN)
